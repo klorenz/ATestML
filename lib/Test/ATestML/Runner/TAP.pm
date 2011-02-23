@@ -25,10 +25,15 @@ our sub assert-fixture($function, $fixture-name, $test) {
         ok True, $test ;
     }
     if ($!) {
-    #CATCH {
-        ok False, $test 
-        or diag "assert-fixture: $fixture-name failed:\n" ~ $!.Str ;
+        ok False, $test
+        or diag "assert-fixture: $fixture-name failed:\n" ~ 
+           Perl6::BacktracePrinter.backtrace_for($!.exception);
     }
+        
+    ##CATCH {
+        #ok False, $test 
+        #or diag "assert-fixture: $fixture-name failed:\n" ~ $!.Str ;
+    #}
 }
 
 our sub assert-true($function, $fixture-name, $test) {

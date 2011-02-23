@@ -44,6 +44,7 @@ class Test::ATestML::Assign {
 }
 
 use Test;
+
 class Test::ATestML::TestSuite { 
     has $.fixture   = [];
     has $.testcases = [];

@@ -10,7 +10,7 @@ sub runtap {
                            ).subst( rx/ ^^ "=end ATestML" .* $ /, '');
 
         my $suite := Test::ATestML::Parser::parse($string);
-        say $suite.perl;
+        # say $suite.perl;
         $suite.run(@modules);
         .close;
     }
