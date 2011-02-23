@@ -1,5 +1,5 @@
-This is ATestML, a simple implementation of kind of TestML in perl6, which you 
-can find at http://www.testml.org.
+This is ATestML, a simple implementation of a test markup language in perl6.
+It is a kind of TestML, which you can find at http://www.testml.org.
 
 ATestML is a test markup language for easy defining tests in a language 
 independend way, this implementation provides conveniences for creating perl6
@@ -39,7 +39,7 @@ look into t/atestml for examples.
 EXAMPLE
 -------
 
-Here is a perl6 example for a ATestML Test in a .t file:
+Here is a perl6 example for a ATestML Test which you could put in a .t file:
 
    require Test::ATestML::TAP ;
    
