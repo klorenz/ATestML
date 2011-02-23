@@ -1,0 +1,37 @@
+This is ATestML, a simple implementation in perl6 of kind of TestML, which you 
+can find at http://www.testml.org.
+
+ATestML is Copyright (C) 2011 by Kay-Uwe Hüll <kiwi@franka.dyndns.org>
+with credits to creators of TestML from http://www.testml.org
+
+Pretty much of concept and syntax are taken from that project, but in a much 
+simpler way.
+
+There were some issues, why I re-implemented it and also simplified it:
+
+* I needed a simple test markup language for testing parsers
+* I did not like to always create two files for a testsuite (each .tml file
+  needs a .t file for running)
+* the perl6 implementation of TestML was broken, or not complete
+* extending the bridges was not easy enough, because you need knowledge about
+  concept of test-contexts and such stuff
+
+License Information
+-------------------
+ATestML is distributed under the terms of the Artistic License 2.0. See LICENSE.
+
+QUICKSTART
+----------
+
+Edit Makefile and set 
+   PERL6_EXE = path/to/your/rakudo/perl6
+or
+   ln -s path/to/your/rakudo rakudo
+
+And then:
+
+   make test
+
+look into t/atestml for examples.
+
+
