@@ -1,10 +1,16 @@
-This is ATestML, a simple implementation in perl6 of kind of TestML, which you 
+This is ATestML, a simple implementation of kind of TestML in perl6, which you 
 can find at http://www.testml.org.
 
-ATestML is Copyright (C) 2011 by Kay-Uwe Hüll <kiwi@franka.dyndns.org>
-with credits to creators of TestML from http://www.testml.org
+ATestML is a test markup language for easy defining tests in a language 
+independend way, this implementation provides conveniences for creating perl6
+tests.
 
-Pretty much of concept and syntax are taken from that project, but in a much 
+ATestML is Copyright (C) 2011 by Kay-Uwe Hüll <kiwi@franka.dyndns.org>
+with credits to creators of TestML from http://www.testml.org.
+
+ATestML is distributed under the terms of the Artistic License 2.0. See LICENSE.
+
+Pretty much of concept and syntax are taken from TestML, but in a much 
 simpler way.
 
 There were some issues, why I re-implemented it and also simplified it:
@@ -15,10 +21,6 @@ There were some issues, why I re-implemented it and also simplified it:
 * the perl6 implementation of TestML was broken, or not complete
 * extending the bridges was not easy enough, because you need knowledge about
   concept of test-contexts and such stuff
-
-License Information
--------------------
-ATestML is distributed under the terms of the Artistic License 2.0. See LICENSE.
 
 QUICKSTART
 ----------
@@ -34,4 +36,54 @@ And then:
 
 look into t/atestml for examples.
 
+EXAMPLE
+-------
 
+Here is a perl6 example for a ATestML Test in a .t file:
+
+   require Test::ATestML::TAP ;
+   
+   =begin ATestML
+
+   { a.trim == b.trim }
+
+   === test-1
+   --- a: 1
+   --- b: 1
+   
+   === test-2
+   --- a
+   foo bar
+   --- b
+   foo bar
+   
+   === test-3
+   --- c: x
+   --- d: y
+   
+   =end ATestML
+
+Or a more complex example:
+
+   our @*MODULES = <MyModule>;
+
+   require Test::ATestML::TAP ;
+
+   module MyModule ;
+
+   sub append-foo($s) {
+       return $s ~ "foo";
+   }
+
+   =begin ATestML
+
+   { a.trim.append-foo == b.trim }
+
+   === test-1
+   --- a
+   hello world
+   --- b
+   hello worldfoo
+   ---
+
+   =end ATestML
